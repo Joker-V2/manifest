@@ -19,26 +19,30 @@ Credits:
 
 To get started with the building process, you'll need to get familiar with [Git and Repo](http://source.android.com/source/using-repo.html).
 
-To initialize your local repository, use a command like this:
+### Sync ###
 
 ```bash
-    repo init -u git://github.com/SuperiorOS/manifest.git -b eleven
+# Initialize local repository
+repo init -u git://github.com/SuperiorOS/manifest.git -b eleven
+
+# Sync
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 ```
 
-Then to sync up:-
-================
-
+### Build ###
 ```bash
-    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-```
+# Notice for devices with FOD
+Set the following flag on device tree
+TARGET_WANTS_FOD_ANIMATIONS := true
 
-Start the build:-
-=================
+# Set up environment
+$ . build/envsetup.sh
 
-```bash
-  . build/envsetup.sh
-  lunch superior_<devicecodename>-userdebug
-  mka bacon -jx
+# Choose a target
+$ lunch superior_<devicecodename>-userdebug
+
+# Start compiling
+$ mka bacon -jx
 ```
 -----------------------------------------------------------------------------
 
