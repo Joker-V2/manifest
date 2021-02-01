@@ -35,6 +35,10 @@ repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 Set the following flag on device tree
 TARGET_WANTS_FOD_ANIMATIONS := true
 
+# Face unlock
+Set the following flag on device tree
+TARGET_USES_FACE_UNLOCK := true
+
 # Set up environment
 $ . build/envsetup.sh
 
